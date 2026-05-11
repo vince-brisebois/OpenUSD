@@ -663,13 +663,20 @@ definition data."""
 }
 
 class "ParticleFieldSphericalHarmonicsAttributeAPI" (
-    apiSchemas = ["ParticleFieldRadianceBaseAPI"]
+    apiSchemas = ["ColorSpaceAPI", "ParticleFieldRadianceBaseAPI"]
     customData = {
+        token[] apiSchemaOverridePropertyNames = ["colorSpace:name"]
         string userDocBrief = """Defines the spherical harmonics attributes for 
 a ParticleField."""
     }
 )
 {
+    uniform token colorSpace:name = "srgb_rec709_display" (
+        customData = {
+            string userDocBrief = """The color space for the spherical harmonics
+radiance coefficients."""
+        }
+    )
     float3[] radiance:sphericalHarmonicsCoefficients (
         customData = {
             string userDocBrief = """An array of spherical harmonics 

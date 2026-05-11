@@ -20,6 +20,7 @@ void wrapUsdVolTokens()
     _ADD_TOKEN(cls, bool_);
     _ADD_TOKEN(cls, cameraDistance);
     _ADD_TOKEN(cls, Color);
+    _ADD_TOKEN(cls, colorSpaceName);
     _ADD_TOKEN(cls, double2);
     _ADD_TOKEN(cls, double3);
     _ADD_TOKEN(cls, double_);
@@ -64,6 +65,7 @@ void wrapUsdVolTokens()
     _ADD_TOKEN(cls, scales);
     _ADD_TOKEN(cls, scalesh);
     _ADD_TOKEN(cls, sortingModeHint);
+    _ADD_TOKEN(cls, srgb_rec709_display);
     _ADD_TOKEN(cls, staggered);
     _ADD_TOKEN(cls, string);
     _ADD_TOKEN(cls, tangential);
@@ -72,6 +74,7 @@ void wrapUsdVolTokens()
     _ADD_TOKEN(cls, Vector);
     _ADD_TOKEN(cls, vectorDataRoleHint);
     _ADD_TOKEN(cls, zDepth);
+    _ADD_TOKEN(cls, ColorSpaceAPI);
     _ADD_TOKEN(cls, Field3DAsset);
     _ADD_TOKEN(cls, FieldAsset);
     _ADD_TOKEN(cls, FieldBase);

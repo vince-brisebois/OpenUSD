@@ -168,6 +168,26 @@ UsdVolParticleFieldSphericalHarmonicsAttributeAPI::GetSchemaAttributeNames(bool 
         return localNames;
 }
 
+UsdColorSpaceAPI
+UsdVolParticleFieldSphericalHarmonicsAttributeAPI::ColorSpaceAPI() const
+{
+    return UsdColorSpaceAPI(GetPrim());
+}
+
+UsdAttribute
+UsdVolParticleFieldSphericalHarmonicsAttributeAPI::GetColorSpaceNameAttr() const
+{
+    return ColorSpaceAPI().GetColorSpaceNameAttr();
+}
+
+UsdAttribute
+UsdVolParticleFieldSphericalHarmonicsAttributeAPI::CreateColorSpaceNameAttr(
+    VtValue const &defaultValue, bool writeSparsely) const
+{
+    return ColorSpaceAPI().CreateColorSpaceNameAttr(
+        defaultValue, writeSparsely);
+}
+
 UsdVolParticleFieldRadianceBaseAPI
 UsdVolParticleFieldSphericalHarmonicsAttributeAPI::ParticleFieldRadianceBaseAPI() const
 {

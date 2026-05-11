@@ -514,17 +514,25 @@ class "ParticleFieldSphericalHarmonicsAttributeAPI" (
         token apiSchemaType = "singleApply"
         token[] apiSchemaCanOnlyApplyTo = ["ParticleField"]
         string extraIncludes = '''
+#include "pxr/usd/usd/colorSpaceAPI.h"
 #include "pxr/usd/usdVol/particleFieldRadianceBaseAPI.h"
         '''
         token[] reflectedAPISchemas = [
+            "ColorSpaceAPI",
             "ParticleFieldRadianceBaseAPI"
         ]
     }
     prepend apiSchemas = [
+        "ColorSpaceAPI",
         "ParticleFieldRadianceBaseAPI"
     ]
 )
 {
+    uniform token colorSpace:name = "srgb_rec709_display" (
+        customData = { bool apiSchemaOverride = true }
+        doc = """The color space for the spherical harmonics radiance
+        coefficients."""
+    )
     uniform int radiance:sphericalHarmonicsDegree = 3 (
         doc = """The highest degree of the spherical harmonics. A degree of N
         implies a coefficient element size (per particle) of (N+1)*(N+1) values.

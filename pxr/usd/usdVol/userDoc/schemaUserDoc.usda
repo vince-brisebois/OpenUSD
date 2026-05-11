@@ -704,6 +704,14 @@ with degree 0.
     }
 )
 {
+    uniform token colorSpace:name (
+        customData = {
+            string userDocBrief = """The color space for the spherical harmonics
+radiance coefficients."""
+            string userDoc = """The color space for the spherical harmonics
+radiance coefficients. The fallback value is `srgb_rec709_display`."""
+        }
+    )
     uniform int radiance:sphericalHarmonicsDegree (
         customData = {
             string userDocBrief = """The highest degree of the spherical 

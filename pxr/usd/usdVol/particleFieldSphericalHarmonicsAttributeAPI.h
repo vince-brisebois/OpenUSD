@@ -16,6 +16,7 @@
 #include "pxr/usd/usd/stage.h"
 #include "pxr/usd/usdVol/tokens.h"
 
+#include "pxr/usd/usd/colorSpaceAPI.h"
 #include "pxr/usd/usdVol/particleFieldRadianceBaseAPI.h"
         
 
@@ -250,6 +251,29 @@ public:
     USDVOL_API
     UsdAttribute CreateRadianceSphericalHarmonicsCoefficientshAttr(VtValue const &defaultValue = VtValue(), bool writeSparsely=false) const;
 
+public:
+    /// \name ColorSpaceAPI
+    /// 
+    /// Convenience accessors for the built-in UsdColorSpaceAPI
+    /// 
+    /// @{
+
+    /// Constructs and returns a UsdColorSpaceAPI object.
+    /// Use this object to access UsdColorSpaceAPI custom methods.
+    USDVOL_API
+    UsdColorSpaceAPI ColorSpaceAPI() const;
+
+    /// See UsdColorSpaceAPI::GetColorSpaceNameAttr().
+    USDVOL_API
+    UsdAttribute GetColorSpaceNameAttr() const;
+
+    /// See UsdColorSpaceAPI::CreateColorSpaceNameAttr().
+    USDVOL_API
+    UsdAttribute CreateColorSpaceNameAttr(
+        VtValue const &defaultValue = VtValue(), 
+        bool writeSparsely=false) const;
+
+    /// @}
 public:
     /// \name ParticleFieldRadianceBaseAPI
     /// 

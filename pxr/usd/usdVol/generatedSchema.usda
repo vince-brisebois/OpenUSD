@@ -663,20 +663,13 @@ definition data."""
 }
 
 class "ParticleFieldSphericalHarmonicsAttributeAPI" (
-    apiSchemas = ["ColorSpaceAPI", "ParticleFieldRadianceBaseAPI"]
+    apiSchemas = ["ParticleFieldRadianceBaseAPI"]
     customData = {
-        token[] apiSchemaOverridePropertyNames = ["colorSpace:name"]
         string userDocBrief = """Defines the spherical harmonics attributes for 
 a ParticleField."""
     }
 )
 {
-    uniform token colorSpace:name = "srgb_rec709_display" (
-        customData = {
-            string userDocBrief = """The color space for the spherical harmonics
-radiance coefficients."""
-        }
-    )
     float3[] radiance:sphericalHarmonicsCoefficients (
         customData = {
             string userDocBrief = """An array of spherical harmonics 
@@ -700,6 +693,7 @@ harmonics."""
 class ParticleField3DGaussianSplat "ParticleField3DGaussianSplat" (
     apiSchemas = ["ParticleFieldPositionAttributeAPI", "ParticleFieldOrientationAttributeAPI", "ParticleFieldScaleAttributeAPI", "ParticleFieldOpacityAttributeAPI", "ParticleFieldKernelGaussianEllipsoidAPI", "ParticleFieldSphericalHarmonicsAttributeAPI"]
     customData = {
+        token[] apiSchemaOverridePropertyNames = ["radiance:sphericalHarmonicsCoefficients", "radiance:sphericalHarmonicsCoefficientsh"]
         string userDocBrief = """A ParticleField that represents a 3D 
 Gaussian splat."""
     }
@@ -763,6 +757,20 @@ the Gaussian to achieve a perspective correct view."""
             string userDocBrief = """Purpose is a classification of geometry into categories that 
         can each be independently included or excluded from traversals of prims 
         on a stage, such as rendering or bounding-box computation traversals."""
+        }
+    )
+    float3[] radiance:sphericalHarmonicsCoefficients (
+        colorSpace = "unknown"
+        customData = {
+            string userDocBrief = """The color space for spherical harmonics
+radiance coefficients in 3D Gaussian splats."""
+        }
+    )
+    half3[] radiance:sphericalHarmonicsCoefficientsh (
+        colorSpace = "unknown"
+        customData = {
+            string userDocBrief = """The color space for spherical harmonics
+radiance coefficients in 3D Gaussian splats."""
         }
     )
     uniform token sortingModeHint = "zDepth" (

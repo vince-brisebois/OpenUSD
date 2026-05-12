@@ -514,25 +514,17 @@ class "ParticleFieldSphericalHarmonicsAttributeAPI" (
         token apiSchemaType = "singleApply"
         token[] apiSchemaCanOnlyApplyTo = ["ParticleField"]
         string extraIncludes = '''
-#include "pxr/usd/usd/colorSpaceAPI.h"
 #include "pxr/usd/usdVol/particleFieldRadianceBaseAPI.h"
         '''
         token[] reflectedAPISchemas = [
-            "ColorSpaceAPI",
             "ParticleFieldRadianceBaseAPI"
         ]
     }
     prepend apiSchemas = [
-        "ColorSpaceAPI",
         "ParticleFieldRadianceBaseAPI"
     ]
 )
 {
-    uniform token colorSpace:name = "srgb_rec709_display" (
-        customData = { bool apiSchemaOverride = true }
-        doc = """The color space for the spherical harmonics radiance
-        coefficients."""
-    )
     uniform int radiance:sphericalHarmonicsDegree = 3 (
         doc = """The highest degree of the spherical harmonics. A degree of N
         implies a coefficient element size (per particle) of (N+1)*(N+1) values.
@@ -600,6 +592,19 @@ class ParticleField3DGaussianSplat "ParticleField3DGaussianSplat" (
     ]
 )
 {
+    float3[] radiance:sphericalHarmonicsCoefficients (
+        colorSpace = "unknown"
+        customData = { bool apiSchemaOverride = true }
+        doc = """The color space for spherical harmonics radiance coefficients
+        in 3D Gaussian splats."""
+    )
+    half3[] radiance:sphericalHarmonicsCoefficientsh (
+        colorSpace = "unknown"
+        customData = { bool apiSchemaOverride = true }
+        doc = """The color space for spherical harmonics radiance coefficients
+        in 3D Gaussian splats."""
+    )
+
     uniform token projectionModeHint = "perspective" (
         allowedTokens = ["perspective", "tangential"]
         customData = { string group = "Metadata" }

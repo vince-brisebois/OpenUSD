@@ -78,13 +78,6 @@ _WrapCanApply(const UsdPrim& prim)
     return UsdVolParticleFieldSphericalHarmonicsAttributeAPI_CanApplyResult(result, whyNot);
 }
 
-        
-static UsdAttribute
-_CreateColorSpaceNameAttr(UsdVolParticleFieldSphericalHarmonicsAttributeAPI &self,
-                                      object defaultVal, bool writeSparsely) {
-    return self.CreateColorSpaceNameAttr(
-        UsdPythonToSdfType(defaultVal, SdfValueTypeNames->Token), writeSparsely);
-}
 } // anonymous namespace
 
 void wrapUsdVolParticleFieldSphericalHarmonicsAttributeAPI()
@@ -145,15 +138,6 @@ void wrapUsdVolParticleFieldSphericalHarmonicsAttributeAPI()
              (arg("defaultValue")=object(),
               arg("writeSparsely")=false))
 
-        
-        .def("GetColorSpaceNameAttr",
-             &This::GetColorSpaceNameAttr)
-        .def("CreateColorSpaceNameAttr",
-             &_CreateColorSpaceNameAttr,
-             (arg("defaultValue")=object(),
-              arg("writeSparsely")=false))
-
-        .def("ColorSpaceAPI", &This::ColorSpaceAPI)
 
         .def("ParticleFieldRadianceBaseAPI", &This::ParticleFieldRadianceBaseAPI)
         .def("__repr__", ::_Repr)

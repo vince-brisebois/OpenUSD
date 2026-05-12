@@ -57,10 +57,6 @@ struct UsdVolTokensType {
     /// 
     /// Possible value for UsdVolVolumeFieldAsset::GetVectorDataRoleHintAttr()
     const TfToken Color;
-    /// \brief "colorSpace:name"
-    /// 
-    /// UsdColorSpaceAPI, UsdVolParticleFieldSphericalHarmonicsAttributeAPI
-    const TfToken colorSpaceName;
     /// \brief "double2"
     /// 
     /// Possible value for UsdVolOpenVDBAsset::GetFieldDataTypeAttr()
@@ -211,11 +207,11 @@ struct UsdVolTokensType {
     const TfToken quatd;
     /// \brief "radiance:sphericalHarmonicsCoefficients"
     /// 
-    /// UsdVolParticleFieldSphericalHarmonicsAttributeAPI
+    /// UsdVolParticleFieldSphericalHarmonicsAttributeAPI, UsdVolParticleField3DGaussianSplat
     const TfToken radianceSphericalHarmonicsCoefficients;
     /// \brief "radiance:sphericalHarmonicsCoefficientsh"
     /// 
-    /// UsdVolParticleFieldSphericalHarmonicsAttributeAPI
+    /// UsdVolParticleFieldSphericalHarmonicsAttributeAPI, UsdVolParticleField3DGaussianSplat
     const TfToken radianceSphericalHarmonicsCoefficientsh;
     /// \brief "radiance:sphericalHarmonicsDegree"
     /// 
@@ -237,10 +233,6 @@ struct UsdVolTokensType {
     /// 
     /// UsdVolParticleField3DGaussianSplat
     const TfToken sortingModeHint;
-    /// \brief "srgb_rec709_display"
-    /// 
-    /// Fallback value for UsdVolParticleFieldSphericalHarmonicsAttributeAPI schema attribute colorSpace:name
-    const TfToken srgb_rec709_display;
     /// \brief "staggered"
     /// 
     /// Possible value for UsdVolOpenVDBAsset::GetFieldClassAttr()
@@ -273,10 +265,6 @@ struct UsdVolTokensType {
     /// 
     /// Fallback value for UsdVolParticleField3DGaussianSplat::GetSortingModeHintAttr()
     const TfToken zDepth;
-    /// \brief "ColorSpaceAPI"
-    /// 
-    /// Schema identifer and family for UsdColorSpaceAPI
-    const TfToken ColorSpaceAPI;
     /// \brief "Field3DAsset"
     /// 
     /// Schema identifer and family for UsdVolField3DAsset

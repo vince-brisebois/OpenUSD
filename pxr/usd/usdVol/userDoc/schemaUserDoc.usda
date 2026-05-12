@@ -704,14 +704,6 @@ with degree 0.
     }
 )
 {
-    uniform token colorSpace:name (
-        customData = {
-            string userDocBrief = """The color space for the spherical harmonics
-radiance coefficients."""
-            string userDoc = """The color space for the spherical harmonics
-radiance coefficients. The fallback value is `srgb_rec709_display`."""
-        }
-    )
     uniform int radiance:sphericalHarmonicsDegree (
         customData = {
             string userDocBrief = """The highest degree of the spherical 
@@ -740,6 +732,7 @@ per-particle element size derived from the SH degree, specifically
 `element size = (degree+1)*(degree+1)).` If it is 
 too long it will be truncated to the number of particles defined by the position 
 data. If it is too short it will be ignored.
+
 """
         } 
     )
@@ -762,6 +755,7 @@ per-particle element size derived from the SH degree, specifically
 `element size = (degree+1)*(degree+1)).` If it is 
 too long it will be truncated to the number of particles defined by the position 
 data. If it is too short it will be ignored.
+
 """
         } 
     )
@@ -781,10 +775,30 @@ data from the original 3DGS paper.
 It also contains rendering hints that can optionally inform
 how the splats should be rendered. These hints typically
 correlate with choices that were made when the data was trained.
+
+Spherical harmonics radiance coefficient attributes have a fallback color space
+of `unknown` for 3D Gaussian splats.
 """
     }
 )
 {
+    float3[] radiance:sphericalHarmonicsCoefficients (
+        customData = {
+            string userDocBrief = """The color space for spherical harmonics
+radiance coefficients in 3D Gaussian splats."""
+            string userDoc = """Spherical harmonics radiance coefficients for
+3D Gaussian splats have a fallback color space of `unknown`."""
+        }
+    )
+    half3[] radiance:sphericalHarmonicsCoefficientsh (
+        customData = {
+            string userDocBrief = """The color space for spherical harmonics
+radiance coefficients in 3D Gaussian splats."""
+            string userDoc = """Spherical harmonics radiance coefficients for
+3D Gaussian splats have a fallback color space of `unknown`."""
+        }
+    )
+
     uniform token projectionModeHint (
         customData = {
             string userDocBrief = """A renderer hint on how to project 

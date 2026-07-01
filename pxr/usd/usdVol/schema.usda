@@ -592,6 +592,19 @@ class ParticleField3DGaussianSplat "ParticleField3DGaussianSplat" (
     ]
 )
 {
+    float3[] radiance:sphericalHarmonicsCoefficients (
+        colorSpace = "unknown"
+        customData = { bool apiSchemaOverride = true }
+        doc = """The color space for spherical harmonics radiance coefficients
+        in 3D Gaussian splats."""
+    )
+    half3[] radiance:sphericalHarmonicsCoefficientsh (
+        colorSpace = "unknown"
+        customData = { bool apiSchemaOverride = true }
+        doc = """The color space for spherical harmonics radiance coefficients
+        in 3D Gaussian splats."""
+    )
+
     uniform token projectionModeHint = "perspective" (
         allowedTokens = ["perspective", "tangential"]
         customData = { string group = "Metadata" }

@@ -20,7 +20,14 @@ pxr_library(usdVol
 )
 
 pxr_test_scripts(
+    testenv/testUsdVolParticleField.py
     testenv/testUsdVolVolume.py
+)
+
+pxr_register_test(testUsdVolParticleField
+    PYTHON
+    COMMAND "${CMAKE_INSTALL_PREFIX}/tests/testUsdVolParticleField"
+    EXPECTED_RETURN_CODE 0
 )
 
 pxr_register_test(testUsdVolVolume

@@ -21,6 +21,7 @@ pxr_library(usdVol
 
 pxr_test_scripts(
     testenv/testUsdVolVolume.py
+    testenv/testUsdVolParticleFieldColorSpace.py
 )
 
 pxr_register_test(testUsdVolVolume
@@ -29,4 +30,8 @@ pxr_register_test(testUsdVolVolume
     EXPECTED_RETURN_CODE 0
 )
 
-
+pxr_register_test(testUsdVolParticleFieldColorSpace
+    PYTHON
+    COMMAND "${CMAKE_INSTALL_PREFIX}/tests/testUsdVolParticleFieldColorSpace"
+    EXPECTED_RETURN_CODE 0
+)

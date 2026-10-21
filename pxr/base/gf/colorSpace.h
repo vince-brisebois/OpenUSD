@@ -64,11 +64,9 @@ PXR_NAMESPACE_OPEN_SCOPE
 /// in the name is meant to indicate that values transformed to this color space
 /// should be adapted to the D65 white point.
 ///
-/// `srgb_rec709_display` is a defined token, but it is a marker only and there
-/// is no canonical behavior associated with it. It is application and renderer
-/// defined how you treat it. If an application or renderer has no special
-/// treatment it is to be understood as being identical to
-/// `srgb_rec709_scene` for purposes of transforming to other color spaces.
+/// `srgb_rec709_display` identifies display-referred sRGB. Gf uses the same
+/// color conversion as `srgb_rec709_scene`; compositing and display treatment
+/// are application-defined.
 ///
 /// In addition the `data` and `unknown` color space names, `raw` and `identity`
 /// are provided for compatibility with existing production assets. The CIEXYZ

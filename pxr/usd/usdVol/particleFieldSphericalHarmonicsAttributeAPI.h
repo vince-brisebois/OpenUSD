@@ -41,6 +41,12 @@ class SdfAssetPath;
 /// A ParticleField related applied schema that provides spherical
 /// harmonics attributes to define the radiance of the particles.
 /// 
+/// The colorSpace metadata on the active coefficients attribute
+/// describes the RGB reconstructed by evaluating the spherical
+/// harmonics, including the representation's bias and clamping.
+/// Color conversion must be applied to the reconstructed RGB, not
+/// independently to the coefficients. The float and half attributes
+/// should specify the same color space when both are authored.
 /// The spherical harmonics degree is constant across all the particles
 /// in the ParticleField.
 /// 

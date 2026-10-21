@@ -50,6 +50,13 @@ class SdfAssetPath;
 /// applied schema automatically applied to provide the required
 /// attributes to define the necessary data from the original 3DGS paper.
 /// 
+/// The spherical harmonics coefficient attributes default to the
+/// display-referred color space srgb_rec709_display. This describes
+/// the reconstructed RGB, not the individual coefficient values.
+/// Override colorSpace metadata on the coefficient attributes to
+/// specify another color space. This attribute-level schema fallback
+/// takes precedence over prim-level and inherited ColorSpaceAPI
+/// settings. It does not prescribe a compositing or display transform.
 /// It also contains some rendering hints that can optionally inform
 /// how the splats should be rendered. These hints typically
 /// corrolate with choices that were made when the data was trained.

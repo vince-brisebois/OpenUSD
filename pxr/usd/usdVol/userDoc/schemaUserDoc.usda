@@ -686,6 +686,14 @@ a ParticleField."""
         string userDoc = """Defines the spherical harmonics attributes for 
 a ParticleField, such as the spherical harmonics degree and coefficients.
 
+The `colorSpace` metadata on the active coefficients attribute describes the
+RGB reconstructed by SH evaluation, including the representation's bias and
+clamping. Apply color conversion to that RGB, not to individual coefficients.
+When both precisions are authored, they should specify the same color space.
+This API does not impose a default color space. Use
+`UsdColorSpaceAPI.ComputeColorSpaceName` on the active coefficients attribute
+to resolve its color space.
+
 The degree is constant across all particles in the ParticleField.
 
 The coefficients are provided in both `float` and `half` types for 
@@ -770,6 +778,18 @@ It inherits from the ParticleField base prim, and has a set of
 built-in schema to provide the required attributes to define the necessary 
 data from the original 3DGS paper.
 
+Both SH coefficient attributes have a `colorSpace` metadata fallback of
+`srgb_rec709_display`. This identifies the reconstructed RGB as display-referred
+sRGB; it does not prescribe a compositing or display transform. Applications
+without special display-referred handling can use the same color conversion
+as `srgb_rec709_scene`.
+
+Override the `colorSpace` metadata on the coefficient attributes (for example,
+with `UsdAttribute.SetColorSpace`) for data trained in another color space.
+The attribute-level schema fallback takes precedence over prim-level and
+inherited `ColorSpaceAPI` settings. Other color attributes on this prim are
+unaffected.
+
 It also contains rendering hints that can optionally inform
 how the splats should be rendered. These hints typically
 correlate with choices that were made when the data was trained.
@@ -777,6 +797,28 @@ correlate with choices that were made when the data was trained.
     }
 )
 {
+    float3[] radiance:sphericalHarmonicsCoefficients (
+        customData = {
+            string userDocBrief = """SH coefficients whose reconstructed RGB
+has a default color space of srgb_rec709_display."""
+            string userDoc = """SH coefficients provided by
+{ref}`ParticleFieldSphericalHarmonicsAttributeAPI`. This schema supplies a
+`colorSpace` metadata fallback of `srgb_rec709_display` for the reconstructed
+RGB. Override the metadata on this attribute to specify another color space.
+"""
+        }
+    )
+    half3[] radiance:sphericalHarmonicsCoefficientsh (
+        customData = {
+            string userDocBrief = """SH coefficients whose reconstructed RGB
+has a default color space of srgb_rec709_display."""
+            string userDoc = """SH coefficients provided by
+{ref}`ParticleFieldSphericalHarmonicsAttributeAPI`. This schema supplies a
+`colorSpace` metadata fallback of `srgb_rec709_display` for the reconstructed
+RGB. Override the metadata on this attribute to specify another color space.
+"""
+        }
+    )
     uniform token projectionModeHint (
         customData = {
             string userDocBrief = """A renderer hint on how to project 

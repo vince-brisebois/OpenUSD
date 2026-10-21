@@ -491,6 +491,12 @@ class "ParticleFieldSphericalHarmonicsAttributeAPI" (
     doc = """A ParticleField related applied schema that provides spherical
             harmonics attributes to define the radiance of the particles.
 
+            The colorSpace metadata on the active coefficients attribute
+            describes the RGB reconstructed by evaluating the spherical
+            harmonics, including the representation's bias and clamping.
+            Color conversion must be applied to the reconstructed RGB, not
+            independently to the coefficients. The float and half attributes
+            should specify the same color space when both are authored.
             The spherical harmonics degree is constant across all the particles
             in the ParticleField.
 
@@ -559,6 +565,13 @@ class ParticleField3DGaussianSplat "ParticleField3DGaussianSplat" (
             applied schema automatically applied to provide the required
             attributes to define the necessary data from the original 3DGS paper.
 
+            The spherical harmonics coefficient attributes default to the
+            display-referred color space srgb_rec709_display. This describes
+            the reconstructed RGB, not the individual coefficient values.
+            Override colorSpace metadata on the coefficient attributes to
+            specify another color space. This attribute-level schema fallback
+            takes precedence over prim-level and inherited ColorSpaceAPI
+            settings. It does not prescribe a compositing or display transform.
             It also contains some rendering hints that can optionally inform
             how the splats should be rendered. These hints typically
             corrolate with choices that were made when the data was trained."""
@@ -592,6 +605,19 @@ class ParticleField3DGaussianSplat "ParticleField3DGaussianSplat" (
     ]
 )
 {
+    float3[] radiance:sphericalHarmonicsCoefficients (
+        colorSpace = "srgb_rec709_display"
+        customData = {
+            bool apiSchemaOverride = true
+        }
+    )
+    half3[] radiance:sphericalHarmonicsCoefficientsh (
+        colorSpace = "srgb_rec709_display"
+        customData = {
+            bool apiSchemaOverride = true
+        }
+    )
+
     uniform token projectionModeHint = "perspective" (
         allowedTokens = ["perspective", "tangential"]
         customData = { string group = "Metadata" }

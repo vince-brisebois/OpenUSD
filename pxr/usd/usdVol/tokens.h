@@ -207,11 +207,11 @@ struct UsdVolTokensType {
     const TfToken quatd;
     /// \brief "radiance:sphericalHarmonicsCoefficients"
     /// 
-    /// UsdVolParticleFieldSphericalHarmonicsAttributeAPI
+    /// UsdVolParticleFieldSphericalHarmonicsAttributeAPI, UsdVolParticleField3DGaussianSplat
     const TfToken radianceSphericalHarmonicsCoefficients;
     /// \brief "radiance:sphericalHarmonicsCoefficientsh"
     /// 
-    /// UsdVolParticleFieldSphericalHarmonicsAttributeAPI
+    /// UsdVolParticleFieldSphericalHarmonicsAttributeAPI, UsdVolParticleField3DGaussianSplat
     const TfToken radianceSphericalHarmonicsCoefficientsh;
     /// \brief "radiance:sphericalHarmonicsDegree"
     /// 
